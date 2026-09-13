@@ -1,12 +1,20 @@
 class Solution {
     int lowerBound(int[] arr, int target) {
        int n = arr.length;
-       for(int i=0;i<n;i++){
-           if(arr[i]>=target){
-               return i;
+       int l =0, h=n-1;
+       int ans =n;
+       while(l<=h){
+           int mid = l + (h-l)/2;
+           if(arr[mid]>=target){
+              ans = mid;
+              h = mid-1;
+           }
+           else{
+               l = mid+1;
            }
        }
-       return n;
+
+       return ans;
         
     }
 }
